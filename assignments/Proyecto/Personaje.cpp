@@ -48,4 +48,24 @@ void Unidad::setNivel(int valor) {
 }
 
 
-//
+// Porcentaje salud ( might be wrong )
+int Unidad::porcentajeSalud(){
+    int porcentaje = (hpoints/vida)*100;
+    return porcentaje;
+}
+
+//Imprimir barra
+void Unidad::imprimirBarra(){
+    int porcentaje = porcentajeSalud();
+    // Estoy pensando como dar un numero de 1 al 20
+    int barrapoints = (porcentaje*20)/100;
+    int restante = 20 - barrapoints;
+    for (int i =0; i < barrapoints; i++){
+        cout << "#" ;
+
+    }
+    for (int i = 0; i < restante; i++){
+    cout << "-";
+    }
+}
+

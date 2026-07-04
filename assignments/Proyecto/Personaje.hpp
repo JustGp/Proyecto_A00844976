@@ -30,7 +30,9 @@ class Unidad
     void atacar(Unidad&);
     void imprimir();
 
-    
+    //Methods anadidos
+
+    void vidaInicial();
 
 
 
