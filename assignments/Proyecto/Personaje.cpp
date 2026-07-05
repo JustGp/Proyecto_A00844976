@@ -2,6 +2,7 @@
 #pragma once
 #include "Personaje.hpp"
 #include <iostream>
+#include <random>
 using namespace std;
 
 // Gael Emiliano VIllatoro Perez A00844976
@@ -68,4 +69,57 @@ void Unidad::imprimirBarra(){
     cout << "-";
     }
 }
+int Unidad::calculaAtaque(Unidad& objetivo){
+    random_device rd;
+    mt19937 gen(rd());
+    if (objetivo.getNivel() <= nivel){
+        uniform_int_distribution<> distrib((ataque/2),ataque);
+        int value = distrib(gen);
+        return value;
 
+    }
+    else{ // objetivo nivel > nivel
+        uniform_int_distribution<> distrib((1),(ataque/2));
+        int value = distrib(gen);
+        return value;
+
+    }
+
+}
+/*
+void Unidad::recibeAtaque(Unidad& objetivo){
+    int  puntos = calculaAtaque(objetivo);
+    objetivo.setHpoints(objetivo.getHpoints() - puntos);
+    if (hpoints< 0){
+        objetivo.setHpoints(0);
+        cout << "La unidad murio" << endl;
+    }
+}
+
+void Unidad::atacar(Unidad& objetivo){
+
+}
+*/
+
+void Unidad::recibeAtaque(int ptosAtaque){
+    hpoints = hpoints - ptosAtaque;
+    if ( hpoints < 0){
+        hpoints = 0;
+        cout << "La unidad murio " << endl;
+    }
+}
+
+
+void Unidad::atacar( Unidad& objetivo){
+    int puntos = objetivo.calculaAtaque(objetivo);
+    objetivo.recibeAtaque(puntos);
+}
+
+void Unidad::imprimir(){
+    cout << "-----Caracteristicas de unidad-----"<< endl;
+    cout << endl;
+    imprimirBarra();
+    cout << "Hitpoints --" << hpoints << endl;
+    cout << "Nivel -- " << nivel << endl;
+    cout << "Ataque -- " << ataque << endl;
+}
