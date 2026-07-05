@@ -3,9 +3,7 @@
 
 # Mermaid class
 
----
-title: Unidad
----
+```mermaid
 classDiagram
 class Unidad {
     - int vida
@@ -32,11 +30,12 @@ class Unidad {
     + void recibeAtaque(int)
     + void atacar(Unidad&)
     + void imprimir()
+
     + void vidaInicial()
 }
 
-Unidad --> Unidad : atacar(), calculaAtaque
-
+Unidad --> Unidad : atacar(), calculaAtaque()
+```
 
 
 
