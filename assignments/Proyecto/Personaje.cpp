@@ -51,7 +51,7 @@ void Unidad::setNivel(int valor) {
 
 // Porcentaje salud ( might be wrong )
 int Unidad::porcentajeSalud(){
-    int porcentaje = (hpoints/vida)*100;
+    int porcentaje = (hpoints*100)/vida;
     return porcentaje;
 }
 
@@ -111,7 +111,7 @@ void Unidad::recibeAtaque(int ptosAtaque){
 
 
 void Unidad::atacar( Unidad& objetivo){
-    int puntos = objetivo.calculaAtaque(objetivo);
+    int puntos = calculaAtaque(objetivo);
     objetivo.recibeAtaque(puntos);
 }
 
@@ -122,4 +122,11 @@ void Unidad::imprimir(){
     cout << "Hitpoints --" << hpoints << endl;
     cout << "Nivel -- " << nivel << endl;
     cout << "Ataque -- " << ataque << endl;
+}
+
+
+//Personalizado
+
+void Unidad::vidaInicial(){
+    hpoints = vida;
 }
