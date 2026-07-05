@@ -34,7 +34,6 @@ class Unidad {
     + void vidaInicial()
 }
 
-Unidad --> Unidad : atacar(), calculaAtaque()
 ```
 
 
