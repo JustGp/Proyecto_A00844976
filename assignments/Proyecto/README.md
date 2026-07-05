@@ -1,5 +1,48 @@
 # Ejercicio - Hello World
 
+
+# Mermaid class
+
+---
+title: Unidad
+---
+classDiagram
+class Unidad {
+    - int vida
+    - int hpoints
+    - int ataque
+    - int nivel
+
+    + Unidad()
+    + Unidad(int, int, int, int)
+
+    + int getVida() const
+    + int getHpoints() const
+    + int getAtaque() const
+    + int getNivel() const
+
+    + void setVida(int)
+    + void setHpoints(int)
+    + void setAtaque(int)
+    + void setNivel(int)
+
+    + int porcentajeSalud()
+    + void imprimirBarra()
+    + int calculaAtaque(Unidad&)
+    + void recibeAtaque(int)
+    + void atacar(Unidad&)
+    + void imprimir()
+    + void vidaInicial()
+}
+
+Unidad --> Unidad : atacar(), calculaAtaque
+
+
+
+
+
+
+
 Este proyecto tiene la estructura básica para cualquier proyecto C++. 
 
 La carpeta contiene el código fuente y el archivo de construcción ```make```.
