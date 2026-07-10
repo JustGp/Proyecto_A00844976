@@ -7,19 +7,21 @@ class Unidad
 {
     public:
     Unidad();
-    Unidad(int, int, int, int);
+    Unidad(int, int, int, int,int);
 
     //getters
     int getVida() const;
     int getHpoints() const;
     int getAtaque() const;
     int getNivel() const;
+    int getArmor() const;
 
     //Setters
     void setVida(int);
     void setHpoints(int);
     void setAtaque(int);
     void setNivel(int);
+    void setArmor(int);
 
 
     //Methods
@@ -32,13 +34,15 @@ class Unidad
 
     //Methods anadidos
 
-    void vidaInicial();
+    void Setup();
+    int calcularBono();
+    int calcularDebuffs();
 
 
 
 
     private:
-    int vida, hpoints, ataque, nivel;
+    int vida, hpoints, ataque, nivel, armor;
 
 
 

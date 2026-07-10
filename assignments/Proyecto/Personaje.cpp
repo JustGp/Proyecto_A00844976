@@ -9,8 +9,8 @@ using namespace std;
 
 
 //Constructor 
-Unidad::Unidad(): vida{100}, hpoints{100}, ataque{10}, nivel{1}{}
-Unidad::Unidad(int valVida, int valHpoints, int valAtaque, int valNivel): vida{valVida}, hpoints{valHpoints}, ataque{valAtaque}, nivel{valNivel}{}
+Unidad::Unidad(): vida{100}, hpoints{100}, ataque{10}, nivel{1}, armor{10}{}
+Unidad::Unidad(int valVida, int valHpoints, int valAtaque, int valNivel, int armory): vida{valVida}, hpoints{valHpoints}, ataque{valAtaque}, nivel{valNivel}, armor{armory}{}
 
 // Getters
 
@@ -30,6 +30,9 @@ int Unidad::getNivel()const {
     return nivel;
 }
 
+int Unidad::getArmor()const{
+    return armor;
+}
 //Setters
 
 void Unidad::setVida(int valor) {
@@ -46,6 +49,10 @@ void Unidad::setAtaque(int valor) {
 
 void Unidad::setNivel(int valor) {
     nivel = valor;
+}
+
+void Unidad::setArmor(int valor){
+    armor = valor;
 }
 
 
@@ -86,23 +93,10 @@ int Unidad::calculaAtaque(Unidad& objetivo){
     }
 
 }
-/*
-void Unidad::recibeAtaque(Unidad& objetivo){
-    int  puntos = calculaAtaque(objetivo);
-    objetivo.setHpoints(objetivo.getHpoints() - puntos);
-    if (hpoints< 0){
-        objetivo.setHpoints(0);
-        cout << "La unidad murio" << endl;
-    }
-}
 
-void Unidad::atacar(Unidad& objetivo){
-
-}
-*/
 
 void Unidad::recibeAtaque(int ptosAtaque){
-    hpoints = hpoints - ptosAtaque;
+    hpoints = hpoints - ptosAtaque ;
     if ( hpoints < 0){
         hpoints = 0;
         cout << "La unidad murio " << endl;
@@ -112,7 +106,7 @@ void Unidad::recibeAtaque(int ptosAtaque){
 
 void Unidad::atacar( Unidad& objetivo){
     int puntos = calculaAtaque(objetivo);
-    objetivo.recibeAtaque(puntos);
+    objetivo.recibeAtaque(puntos+ calcularBono());
 }
 
 void Unidad::imprimir(){
@@ -127,6 +121,14 @@ void Unidad::imprimir(){
 
 //Personalizado
 
-void Unidad::vidaInicial(){
+void Unidad::Setup(){
     hpoints = vida;
+}
+
+int Unidad::calcularBono(){
+    return 0;
+}
+
+int Unidad::calcularDebuffs(){
+    return 0;
 }
