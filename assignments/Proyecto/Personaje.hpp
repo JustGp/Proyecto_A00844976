@@ -37,7 +37,8 @@ class Unidad
     virtual void Setup();
     virtual int calcularBono(int);
     virtual int calcularDebuffs(int);
-
+    virtual void turnPass();
+    
   
 
 

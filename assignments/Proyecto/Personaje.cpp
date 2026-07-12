@@ -106,7 +106,14 @@ void Unidad::recibeAtaque(int ptosAtaque){
 
 void Unidad::atacar( Unidad& objetivo){
     int puntos = calculaAtaque(objetivo);
-    objetivo.recibeAtaque(puntos+ calcularBono(puntos) - calcularDebuffs(puntos));
+    int damage = puntos+ calcularBono(puntos) - calcularDebuffs(puntos);
+    if (damage <= 0){
+        cout << "Perfect block, no damage" << endl;
+    }
+    else{
+        objetivo.recibeAtaque(damage);
+
+    }
 }
 
 void Unidad::imprimir(){
