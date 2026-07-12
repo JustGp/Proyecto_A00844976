@@ -9,7 +9,7 @@ using namespace std;
 
 
 //Constructor 
-Unidad::Unidad(): vida{100}, hpoints{100}, ataque{10}, nivel{1}, armor{10}{}
+Unidad::Unidad(): vida{100}, hpoints{100}, ataque{20}, nivel{1}, armor{10}{}
 Unidad::Unidad(int valVida, int valHpoints, int valAtaque, int valNivel, int armory): vida{valVida}, hpoints{valHpoints}, ataque{valAtaque}, nivel{valNivel}, armor{armory}{}
 
 // Getters
@@ -106,16 +106,16 @@ void Unidad::recibeAtaque(int ptosAtaque){
 
 void Unidad::atacar( Unidad& objetivo){
     int puntos = calculaAtaque(objetivo);
-    objetivo.recibeAtaque(puntos+ calcularBono());
+    objetivo.recibeAtaque(puntos+ calcularBono(puntos) - calcularDebuffs(puntos));
 }
 
 void Unidad::imprimir(){
     cout << "-----Caracteristicas de unidad-----"<< endl;
     cout << endl;
     imprimirBarra();
-    cout << "Hitpoints --" << hpoints << endl;
-    cout << "Nivel -- " << nivel << endl;
-    cout << "Ataque -- " << ataque << endl;
+    cout << "Hitpoints --" << getHpoints() << endl;
+    cout << "Nivel -- " << getNivel()  << endl;
+    cout << "Ataque -- " << getAtaque() << endl;
 }
 
 
@@ -125,10 +125,10 @@ void Unidad::Setup(){
     hpoints = vida;
 }
 
-int Unidad::calcularBono(){
+int Unidad::calcularBono(int puntos){
     return 0;
 }
 
-int Unidad::calcularDebuffs(){
+int Unidad::calcularDebuffs(int puntos ){
     return 0;
 }

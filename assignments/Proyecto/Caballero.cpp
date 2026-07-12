@@ -2,7 +2,6 @@
 #include "Caballero.hpp"
 using namespace std;
 #include <iostream>
-#include <random>
 
 //Constructor
 
@@ -36,8 +35,35 @@ void Caballero::Setup(){
     setInercial(1);
 
 }
-
-int Caballero::calcularBono(){
-    int bono = (getNivel()*inercial);
+// El dano se aumenta cada turno por un 0.2 del dano total, por cada hit consecutivo
+int Caballero::calcularBono(int puntos){
+    int bono = (puntos*(inercial))/5;
+    hitstrike();
     return bono;
+
+}
+// Cada vez que ataque recibe menos dano 
+int Caballero::calcularDebuffs(int puntos){
+    int debuff = getNivel() * getInercial();
+    if (debuff >= puntos ){
+        return 1;
+    }
+    else{
+        return debuff;
+    }
+}
+
+void Caballero::hitstrike(){
+    setInercial(getInercial() + (1*getNivel()));
+}
+
+void Caballero::imprimir(){
+    cout << "-----Caracteristicas del Caballero-----"<< endl;
+    cout << endl;
+    imprimirBarra();
+    cout << "Hitpoints --" << getHpoints() << endl;
+    cout << "Nivel -- " << getNivel()  << endl;
+    cout << "Ataque -- " << getAtaque() << endl;
+    cout << "HitStrike -- " << getInercial() << endl;
+
 }

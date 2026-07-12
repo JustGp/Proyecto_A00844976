@@ -6,14 +6,14 @@ class Caballero : public Unidad{
     public:
     Caballero();
     Caballero(int , int, int, int ,int ,int);
-    int hitstrike();
+    void hitstrike();
     int getInercial() const ;
     void setInercial(int);
 // rescritos
-    void imprimir();
-    void Setup();
-    int calcularBono();
-    int calcularDebuffs();
+    void imprimir() override;
+    void Setup() override;
+    int calcularBono(int) override ;
+    int calcularDebuffs(int) override;
 
 
 

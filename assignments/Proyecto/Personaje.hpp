@@ -30,14 +30,15 @@ class Unidad
     int calculaAtaque(Unidad&);
     void recibeAtaque(int);
     void atacar(Unidad&);
-    void imprimir();
+    virtual void imprimir();
 
     //Methods anadidos
 
-    void Setup();
-    int calcularBono();
-    int calcularDebuffs();
+    virtual void Setup();
+    virtual int calcularBono(int);
+    virtual int calcularDebuffs(int);
 
+  
 
 
 
