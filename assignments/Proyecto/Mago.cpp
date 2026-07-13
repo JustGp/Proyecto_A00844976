@@ -79,7 +79,7 @@ int Mago::calcularBono(int dano){
 }
 
 int Mago::calcularDebuffs(int ddano){
-    return manaBlock() - tollDebuff();
+    return -manaBlock() + tollDebuff();
 }
 
 
