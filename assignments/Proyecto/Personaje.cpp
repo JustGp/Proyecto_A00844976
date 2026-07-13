@@ -139,3 +139,11 @@ int Unidad::calcularBono(int puntos){
 int Unidad::calcularDebuffs(int puntos ){
     return 0;
 }
+
+void Unidad::turnPass(){
+    // No hace nada
+}
+
+void Unidad::killReset(){
+    //Para la unidad arquero
+}

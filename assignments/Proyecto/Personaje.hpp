@@ -38,6 +38,8 @@ class Unidad
     virtual int calcularBono(int);
     virtual int calcularDebuffs(int);
     virtual void turnPass();
+    virtual void killReset();
+    
     
   
 
