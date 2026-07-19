@@ -2,6 +2,7 @@
 #include "Caballero.hpp"
 using namespace std;
 #include <iostream>
+#include <random>
 
 //Constructor
 
@@ -27,9 +28,9 @@ void Caballero::setInercial(int valor) {
 
 //Methods
 void Caballero::Setup(){
-    Unidad::setVida(150);
+    Unidad::setVida(100);
     Unidad::setAtaque(20);
-    Unidad::setHpoints(150);
+    Unidad::setHpoints(100);
     Unidad::setArmor(10);
     Unidad::setNivel(1);
     setInercial(1);
@@ -56,6 +57,26 @@ int Caballero::calcularDebuffs(int puntos){
 void Caballero::hitstrike(){
     setInercial(getInercial() + (1*getNivel()));
 }
+
+
+
+void Caballero::revivir(){
+    random_device rd;
+    mt19937 gen(rd());
+    int suma = getNivel() * getInercial();
+    if (suma >= 60){
+        //hacer nada, la unidad esta muy op para este punto
+        suma = 60;
+    }
+
+    uniform_int_distribution<> distrib(0,100);
+    int randint = distrib(gen);
+     if (randint <= suma){
+        cout << "El caballero se llena de determinacion y se levanta" << endl;
+        setHpoints(50);
+     }
+}
+
 
 void Caballero::imprimir(){
     cout << "-----Caracteristicas del Caballero-----"<< endl;

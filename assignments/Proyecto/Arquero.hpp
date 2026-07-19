@@ -19,6 +19,7 @@ class Arquero : public Unidad{
     void killReset() override;
     void turnPass() override;
 
+    void revivir() override;
 
 
 

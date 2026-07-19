@@ -100,6 +100,7 @@ void Unidad::recibeAtaque(int ptosAtaque){
     if ( hpoints < 0){
         hpoints = 0;
         cout << "La unidad murio " << endl;
+        revivir();
     }
 }
 
@@ -146,4 +147,8 @@ void Unidad::turnPass(){
 
 void Unidad::killReset(){
     //Para la unidad arquero
+}
+
+void Unidad::revivir(){
+    cout << " No pos no se levanta" << endl;
 }

@@ -32,6 +32,10 @@ class Unidad
     void atacar(Unidad&);
     virtual void imprimir();
 
+    //methodos anadidos despues
+    virtual void revivir();
+
+
     //Methods anadidos
 
     virtual void Setup();

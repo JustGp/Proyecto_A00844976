@@ -99,3 +99,12 @@ void Mago::imprimir(){
 
 
 }
+
+void Mago::revivir(){
+    if (getMana() >= 50){
+        cout << " El mago toma su energia magica y magiccamente se levanta" << endl;
+        setToll(getToll()+100);
+        setMana(0);
+        setHpoints(25);
+    }
+}

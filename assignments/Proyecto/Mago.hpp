@@ -24,6 +24,9 @@ class Mago : public Unidad{
     int calcularDebuffs(int) override;
     void turnPass() override;
 
+
+    void revivir() override;
+
     private:
     int mana;
     int toll;

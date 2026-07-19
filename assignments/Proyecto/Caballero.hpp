@@ -15,6 +15,7 @@ class Caballero : public Unidad{
     int calcularBono(int) override ;
     int calcularDebuffs(int) override;
 
+    void revivir() override;
 
 
     private:

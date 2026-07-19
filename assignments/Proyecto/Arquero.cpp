@@ -99,6 +99,18 @@ void Arquero::imprimir(){
 
 }
 
+void Arquero::revivir(){
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<> distrib(0,50);
+    int randint = distrib(gen);
+
+    if (getAgility() >= randint ){
+        cout << " El arquero esquiva el ataque letal" << endl;
+        setHpoints(10);
+    }
+}
+
 
 
 
