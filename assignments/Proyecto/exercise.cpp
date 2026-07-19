@@ -6,22 +6,24 @@ using namespace std;
 #include "Caballero.hpp"
 #include "Mago.hpp"
 #include "Arquero.hpp"
-#include "Personaje.cpp"
-#include "Caballero.cpp"
-#include "Mago.cpp"
-#include "Arquero.cpp"
 
 
 int main() 
 {
+  std::vector<Unidad*> unidades;
+  unidades.push_back(new Caballero);
+  unidades.push_back(new Mago);
+  unidades.push_back(new Arquero);
 
-  Caballero SirLancelot;
-  Mago Merlin;
-  Arquero Jose;
+  for(Unidad* uni: unidades ){
+    uni->imprimir();
 
-  SirLancelot.imprimir();
-  Merlin.imprimir();
-  Jose.imprimir();
+  }
+
+  for (Unidad* uni: unidades){
+    
+  }
+
 
 
 

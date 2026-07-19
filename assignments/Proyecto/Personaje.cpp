@@ -152,3 +152,7 @@ void Unidad::killReset(){
 void Unidad::revivir(){
     cout << " No pos no se levanta" << endl;
 }
+
+void Unidad::operator +( Unidad& enemigo){
+    atacar(enemigo);
+}

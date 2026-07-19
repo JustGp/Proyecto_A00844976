@@ -29,11 +29,12 @@ class Unidad
     void imprimirBarra();
     int calculaAtaque(Unidad&);
     void recibeAtaque(int);
-    void atacar(Unidad&);
+    virtual void atacar(Unidad&);
     virtual void imprimir();
 
     //methodos anadidos despues
     virtual void revivir();
+    void operator + ( Unidad&) ;
 
 
     //Methods anadidos
