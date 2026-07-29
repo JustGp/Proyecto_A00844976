@@ -108,3 +108,10 @@ void Mago::revivir(){
         setHpoints(25);
     }
 }
+
+void Mago::killReset(){
+    setMana(getMana()+20);
+    setHpoints(getHpoints() + 20);
+    setNivel(getNivel()+1);
+
+}

@@ -23,6 +23,7 @@ class Mago : public Unidad{
     int calcularBono(int) override ;
     int calcularDebuffs(int) override;
     void turnPass() override;
+    void killReset() override;
 
 
     void revivir() override;

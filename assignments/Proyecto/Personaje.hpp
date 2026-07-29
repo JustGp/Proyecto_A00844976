@@ -33,7 +33,7 @@ class Unidad
     virtual void imprimir();
 
     //methodos anadidos despues
-    virtual void revivir();
+    virtual void revivir() =0 ;
     void operator + ( Unidad&) ;
 
 
@@ -43,7 +43,7 @@ class Unidad
     virtual int calcularBono(int);
     virtual int calcularDebuffs(int);
     virtual void turnPass();
-    virtual void killReset();
+    virtual void killReset() = 0;
     
     
   

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <random>
 using namespace std;
 
 #include "Personaje.hpp"
@@ -10,28 +11,79 @@ using namespace std;
 
 int main() 
 {
-  std::vector<Unidad*> unidades;
-  unidades.push_back(new Caballero);
-  unidades.push_back(new Mago);
-  unidades.push_back(new Arquero);
+  int quantity;
+  bool winneryet;
+  vector <Unidad*> buenos;
+  vector <Unidad*> malos;
 
-  for(Unidad* uni: unidades ){
-    uni->imprimir();
+  vector <Unidad*> ejemplo;
+  ejemplo.push_back(new Caballero);
+  ejemplo.push_back(new Mago);
+  ejemplo.push_back(new Arquero);
+
+  cout << "-----------------------"<< endl;
+  cout << "SIMULADOR DE PELEAS " << endl;
+  cout << "ELIGE LA CANTIDAD DE LOS EJERCITOS" << endl;
+  cin >> quantity;
+
+  random_device rd;
+  mt19937 gen(rd());
+  uniform_int_distribution<> distrib(1,3);
+
+  for(int i; i< quantity ; i++){
+    int value = distrib(gen);
+    if (value == 1){
+      buenos.push_back(new Caballero());
+    }
+    if ( value == 2){
+      buenos.push_back(new Arquero());
+    }
+    if ( value == 3){
+      buenos.push_back(new Mago());
+    }
+
 
   }
 
-  for (size_t i = 0; i < unidades.size(); i++){
-    if (i == unidades.size() - 1){
-        *unidades[i] + *unidades[0];       // last one attacks the first
+  for(int i; i<= quantity ; i++){
+    int value = distrib(gen);
+    if (value == 1){
+      malos.push_back(new Caballero());
     }
-    else{
-        *unidades[i] + *unidades[i + 1];   // everyone else attacks the next one
+    if ( value == 2){
+      malos.push_back(new Arquero());
     }
-}
+    if ( value == 3){
+      malos.push_back(new Mago());
+    }
 
-  for(Unidad* uni: unidades ){
-    uni->imprimir();
 
   }
+  cout << " ------------------------" << endl;
+  cout << "Soldados de tu ejercito!!"<< endl;
+  for (Unidad* uni : buenos){
+    cout << "Tipo : " << typeid(*uni).name() << endl;
+  }
+
+  cout << " ------------------------" << endl;
+  cout << "Los malos >:C" << endl;
+  for (Unidad* uni :  malos){
+    cout << "Tipo : " << typeid(*uni).name() << endl;
+  }
+
+  cout << " Estadistica base de cada unidad!!" << endl;
+
+  for ( Unidad* uni : ejemplo){
+    uni->imprimir();
+  }
+
+
+  do{
+    winneryet = false;
+
+
+  }
+  while(winneryet == true);
+
 
 }

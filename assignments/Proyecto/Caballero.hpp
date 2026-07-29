@@ -16,6 +16,7 @@ class Caballero : public Unidad{
     int calcularDebuffs(int) override;
 
     void revivir() override;
+    void killReset() override;
 
 
     private:

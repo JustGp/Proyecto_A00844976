@@ -85,6 +85,7 @@ void Arquero::turnPass(){
 void Arquero::killReset(){
     setAgility(25);
     setAccuracy(0);
+    setNivel(getNivel() + 1);
 }
 
 void Arquero::imprimir(){

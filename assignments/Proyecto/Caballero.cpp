@@ -1,4 +1,3 @@
-#pragma once
 #include "Caballero.hpp"
 using namespace std;
 #include <iostream>
@@ -87,4 +86,9 @@ void Caballero::imprimir(){
     cout << "Ataque -- " << getAtaque() << endl;
     cout << "HitStrike -- " << getInercial() << endl;
 
+}
+
+void Caballero::killReset(){
+    setHpoints(getHpoints()+30);
+    setNivel(getNivel()+1);
 }

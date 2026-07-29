@@ -1,5 +1,4 @@
 //GEnera la implementación de la clase base Personaje
-#pragma once
 #include "Personaje.hpp"
 #include <iostream>
 #include <random>
@@ -145,13 +144,7 @@ void Unidad::turnPass(){
     // No hace nada
 }
 
-void Unidad::killReset(){
-    //Para la unidad arquero
-}
 
-void Unidad::revivir(){
-    cout << " No pos no se levanta" << endl;
-}
 
 void Unidad::operator +( Unidad& enemigo){
     atacar(enemigo);
