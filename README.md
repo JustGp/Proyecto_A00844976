@@ -1,6 +1,12 @@
+A00844976 
+GAEL EMILIANO VILLATORO PEREZ
+
+
+
 ```mermaid
 classDiagram
     class Unidad {
+        <<abstract>>
         -int vida
         -int hpoints
         -int ataque
@@ -23,14 +29,16 @@ classDiagram
         +calculaAtaque(Unidad&) int
         +recibeAtaque(int) void
         +atacar(Unidad&) void
-        +imprimir()* void
-        +Setup()* void
-        +calcularBono(int)* int
-        +calcularDebuffs(int)* int
-        +turnPass()* void
+        +imprimir() void
+        +operator+(Unidad&) void
+        +Setup() void
+        +calcularBono(int) int
+        +calcularDebuffs(int) int
+        +turnPass() void
+        +revivir()* void
         +killReset()* void
     }
- 
+
     class Caballero {
         -int inercial
         +Caballero()
@@ -42,8 +50,29 @@ classDiagram
         +Setup() void
         +calcularBono(int) int
         +calcularDebuffs(int) int
+        +revivir() void
+        +killReset() void
     }
- 
+
+    class Arquero {
+        -int accuracy
+        -int agility
+        +Arquero()
+        +Arquero(int, int, int, int, int, int, int)
+        +getAccuracy() int
+        +setAccuracy(int) void
+        +AccuracyAttack() int
+        +getAgility() int
+        +setAgility(int) void
+        +imprimir() void
+        +Setup() void
+        +calcularBono(int) int
+        +calcularDebuffs(int) int
+        +killReset() void
+        +turnPass() void
+        +revivir() void
+    }
+
     class Mago {
         -int mana
         -int toll
@@ -62,29 +91,21 @@ classDiagram
         +calcularBono(int) int
         +calcularDebuffs(int) int
         +turnPass() void
-    }
- 
-    class Arquero {
-        -int accuracy
-        -int agility
-        +Arquero()
-        +Arquero(int, int, int, int, int, int, int)
-        +getAccuracy() int
-        +setAccuracy(int) void
-        +AccuracyAttack() int
-        +getAgility() int
-        +setAgility(int) void
-        +imprimir() void
-        +Setup() void
-        +calcularBono(int) int
-        +calcularDebuffs(int) int
         +killReset() void
-        +turnPass() void
+        +revivir() void
     }
- 
-    Unidad <|-- Caballero
-    Unidad <|-- Mago
-    Unidad <|-- Arquero
- 
 
+    class runtime_error {
+        <<external>>
+    }
+
+    class EjercitoVacioExcepcion {
+        +EjercitoVacioExcepcion()
+        +what() const char*
+    }
+
+    Unidad <|-- Caballero
+    Unidad <|-- Arquero
+    Unidad <|-- Mago
+    runtime_error <|-- EjercitoVacioExcepcion
 ```
