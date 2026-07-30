@@ -10,22 +10,32 @@ using namespace std;
 
 
 Unidad* duelo(Unidad* bueno, Unidad* malo){
+  cout << endl;
+  cout << endl;
+  cout << endl;
   cout << "La batalla empieza!!" << endl;
   cout << " TU SOLDADO" << endl;
   bueno->imprimir();
+  cout << endl;
+  cout << endl;
   cout << " EL ENEMIGO " << endl;
   malo->imprimir();
   cout << "Que empiece !!" << endl;
 
-  while(bueno->getHpoints() >= 0 && malo->getHpoints() >= 0){
+  while(bueno->getHpoints() > 0 && malo->getHpoints() > 0){
     *bueno + *malo;
     if (malo->getHpoints() <= 0){
       break;
     }
     *malo + *bueno;
+    malo->turnPass();
+    bueno->turnPass();
   }
+  cout << endl;
+  cout << endl;
 
   if(bueno->getHpoints() <= 0){
+
     cout << " Tu soldado perdio :( " << endl;
     cout << " Stats del enemigo" << endl;
     malo->killReset();
@@ -152,10 +162,13 @@ int main()
 
   }
   else{
+    cout << endl;
+    cout << endl;
     cout << " GANASTE!! :)" << endl;
     cout << " Stats de tu ejercito restantes" << endl;
     for (Unidad* uni :  buenos){
       cout << "Tipo : " << typeid(*uni).name() << endl;
+      uni->imprimir();
     }
   }
 
