@@ -2,6 +2,16 @@
 // A00844976 Gael Villatoro Perez
 
 #pragma once
+#include <exception>
+#include <iostream>
+
+class EjercitoVacioExcepcion : public std::runtime_error {
+    virtual const char* what() const throw(){
+        return "Un ejercito ya fue vencido";
+    }
+   
+}myex;
+
 
 class Unidad
 {

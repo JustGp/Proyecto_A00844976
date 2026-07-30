@@ -9,6 +9,39 @@ using namespace std;
 #include "Arquero.hpp"
 
 
+Unidad* duelo(Unidad* bueno, Unidad* malo){
+  cout << "La batalla empieza!!" << endl;
+  cout << " TU SOLDADO" << endl;
+  bueno->imprimir();
+  cout << " EL ENEMIGO " << endl;
+  malo->imprimir();
+  cout << "Que empiece !!" << endl;
+
+  while(bueno->getHpoints() >= 0 && malo->getHpoints() >= 0){
+    *bueno + *malo;
+    if (malo->getHpoints() <= 0){
+      break;
+    }
+    *malo + *bueno;
+  }
+
+  if(bueno->getHpoints() <= 0){
+    cout << " Tu soldado perdio :( " << endl;
+    cout << " Stats del enemigo" << endl;
+    malo->killReset();
+    malo->imprimir();
+    return bueno;
+  }
+  else{
+    cout << " Ganaste la pelea :) "<< endl;
+    bueno->killReset();
+    bueno->imprimir();
+    return malo;
+  }
+};
+
+
+
 int main() 
 {
   int quantity;
@@ -30,7 +63,7 @@ int main()
   mt19937 gen(rd());
   uniform_int_distribution<> distrib(1,3);
 
-  for(int i; i< quantity ; i++){
+  for(int i = 0; i< quantity ; i++){
     int value = distrib(gen);
     if (value == 1){
       buenos.push_back(new Caballero());
@@ -45,7 +78,7 @@ int main()
 
   }
 
-  for(int i; i<= quantity ; i++){
+  for(int i= 0; i< quantity ; i++){
     int value = distrib(gen);
     if (value == 1){
       malos.push_back(new Caballero());
@@ -77,13 +110,53 @@ int main()
     uni->imprimir();
   }
 
+  while (true){
+    try{
+      if ( buenos.empty() || !malos.empty()){
+        throw myex;
+        break;
 
-  do{
-    winneryet = false;
+      }
+      random_device rd;
+      mt19937 gen(rd());
+      uniform_int_distribution<> distribBuenos(0,buenos.size()-1);
+      uniform_int_distribution<> distribMalos(0,malos.size()-1);
+      int buenoide = distribBuenos(gen);
+      int maloide = distribMalos(gen);
+
+      duelo(buenos[buenoide], malos[maloide]);
+
+      
+    }
+    catch( exception& e){
+      cout << e.what() << "\n";
+      break;
+    }
+  }
+  cout << " El resultado fue!!" << endl;
+
+  if (buenos.size() == 0){
+    cout << " Perdiste :(" << endl;
+    cout << " Stats de los enemigos restantes" << endl;
+    for (Unidad* uni :  malos){
+      cout << "Tipo : " << typeid(*uni).name() << endl;
+    }
 
 
   }
-  while(winneryet == true);
+  else{
+    cout << " GANASTE!! :)" << endl;
+    cout << " Stats de tu ejercito restantes" << endl;
+    for (Unidad* uni :  buenos){
+      cout << "Tipo : " << typeid(*uni).name() << endl;
+    }
+  }
+
+  cout << "-----------------------" << endl;
+  cout << " Gracias por usar :)" << endl;
+
+
+
 
 
 }
