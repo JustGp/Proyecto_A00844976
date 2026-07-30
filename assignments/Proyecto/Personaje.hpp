@@ -6,11 +6,11 @@
 #include <iostream>
 
 class EjercitoVacioExcepcion : public std::runtime_error {
-    virtual const char* what() const throw(){
-        return "Un ejercito ya fue vencido";
-    }
-   
-}myex;
+    public:
+        EjercitoVacioExcepcion() : std::runtime_error("Un ejercito ya fue vencido") {}
+};
+
+inline EjercitoVacioExcepcion myex;
 
 
 class Unidad

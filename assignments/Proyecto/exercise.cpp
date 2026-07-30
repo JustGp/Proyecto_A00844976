@@ -45,7 +45,6 @@ Unidad* duelo(Unidad* bueno, Unidad* malo){
 int main() 
 {
   int quantity;
-  bool winneryet;
   vector <Unidad*> buenos;
   vector <Unidad*> malos;
 
@@ -112,7 +111,7 @@ int main()
 
   while (true){
     try{
-      if ( buenos.empty() || !malos.empty()){
+      if ( buenos.empty() || malos.empty()){
         throw myex;
         break;
 
@@ -124,8 +123,16 @@ int main()
       int buenoide = distribBuenos(gen);
       int maloide = distribMalos(gen);
 
-      duelo(buenos[buenoide], malos[maloide]);
+      Unidad* perdedor = duelo(buenos[buenoide], malos[maloide]);
 
+      if (perdedor == buenos[buenoide]){
+        delete buenos[buenoide];
+        buenos.erase(buenos.begin() + buenoide);
+      }
+      else{
+        delete malos[maloide];
+        malos.erase(malos.begin() + maloide);
+      }
       
     }
     catch( exception& e){
